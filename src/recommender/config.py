@@ -4,8 +4,15 @@ import logging
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import Field
+from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class FeedSource(BaseModel):
+    """Configured news feed source descriptor."""
+
+    name: str
+    url: str
 
 
 class Settings(BaseSettings):
@@ -25,6 +32,25 @@ class Settings(BaseSettings):
         alias="DATABASE_URL",
     )
     data_dir: Path = Field(default=Path("data"), alias="DATA_DIR")
+    news_sources: str = Field(
+        default="",
+        alias="NEWS_SOURCES",
+        description="Feed sources formatted as 'source_name,url;source_b,url_b'",
+    )
+
+    def get_feed_sources(self) -> list[FeedSource]:
+        """Parse NEWS_SOURCES string into FeedSource objects."""
+        sources: list[FeedSource] = []
+        if not self.news_sources:
+            return sources
+        for item in self.news_sources.split(";"):
+            item = item.strip()
+            if not item:
+                continue
+            parts = item.split(",", 1)
+            if len(parts) == 2 and parts[0].strip() and parts[1].strip():
+                sources.append(FeedSource(name=parts[0].strip(), url=parts[1].strip()))
+        return sources
 
 
 @lru_cache

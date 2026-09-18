@@ -26,4 +26,3 @@ def init_db(engine: Engine) -> None:
 def drop_db(engine: Engine) -> None:
     """Drop all database tables defined in the metadata."""
     Base.metadata.drop_all(bind=engine)
-
