@@ -1,7 +1,7 @@
 """Deterministic deduplication and grouping for financial news articles."""
 
-from difflib import SequenceMatcher
 import re
+from difflib import SequenceMatcher
 from typing import Any
 
 from recommender.processing.cleaning import normalize_title, normalize_url
@@ -181,4 +181,3 @@ def group_duplicate_articles(
             groups.append([article])
 
     return groups
-
