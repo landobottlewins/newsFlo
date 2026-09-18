@@ -1,8 +1,7 @@
 """Behavioral interest updater and time decay algorithms."""
 
-from datetime import UTC, datetime, timedelta
 import math
-from typing import Any
+from datetime import UTC, datetime, timedelta
 
 from sqlalchemy.orm import Session
 

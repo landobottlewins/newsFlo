@@ -71,4 +71,3 @@ def get_user_interactions(
         .limit(limit)
     )
     return list(session.scalars(stmt).all())
-

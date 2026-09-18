@@ -116,4 +116,3 @@ def test_event_storage_separated_from_user_interests(session: Session):
     # Model separation: interests must remain untouched until updater is explicitly run
     user_interests = user.interests
     assert len(user_interests) == 0
-

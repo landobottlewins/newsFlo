@@ -7,7 +7,6 @@ from sqlalchemy.orm import Session
 
 from recommender.models import (
     Article,
-    Interaction,
     InteractionType,
     create_db_engine,
     drop_db,
@@ -190,4 +189,3 @@ def test_unrelated_topics_unaffected(session: Session, sample_articles):
     interests = get_user_interests(user_id=user_id, session=session)
     assert interests["AI"] > 0.50
     assert interests["Bonds"] == 0.75  # Unrelated topic remains exactly 0.75
-

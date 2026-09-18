@@ -63,9 +63,7 @@ class UserInterest(Base):
 
     user: Mapped["User"] = relationship("User", back_populates="interests")
 
-    __table_args__ = (
-        UniqueConstraint("user_id", "topic", name="uq_user_interest_user_topic"),
-    )
+    __table_args__ = (UniqueConstraint("user_id", "topic", name="uq_user_interest_user_topic"),)
 
     def __repr__(self) -> str:
         return f"<UserInterest(user_id={self.user_id}, topic={self.topic!r}, score={self.score})>"

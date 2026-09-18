@@ -80,4 +80,3 @@ def set_interest(
 
     session.flush()
     return interest
-

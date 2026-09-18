@@ -1,7 +1,7 @@
 """Tests for User and UserInterest models and profile functions (Task 008)."""
 
-from sqlalchemy.orm import Session
 import pytest
+from sqlalchemy.orm import Session
 
 from recommender.models import User, create_db_engine, drop_db, get_session_factory, init_db
 from recommender.users import get_user_interests, set_interest
@@ -82,4 +82,3 @@ def test_score_boundaries(session: Session):
     # Below 0.0 should clamp to 0.0
     low = set_interest(user_id=3, topic="Forex", score=-0.45, session=session)
     assert low.score == 0.0
-
