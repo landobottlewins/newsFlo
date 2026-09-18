@@ -1,9 +1,9 @@
 """Article embedding generation, provider abstraction, and vector comparison."""
 
-from abc import ABC, abstractmethod
 import hashlib
 import math
 import re
+from abc import ABC, abstractmethod
 from typing import Any
 
 # Default dimension matching standard lightweight text embedding models
@@ -67,7 +67,7 @@ class DeterministicHashEmbeddingProvider(EmbeddingProvider):
 
         # Add 2-gram representations for phrase awareness
         for i in range(len(tokens) - 1):
-            bigram = f"{tokens[i]}_{tokens[i+1]}"
+            bigram = f"{tokens[i]}_{tokens[i + 1]}"
             h = int(hashlib.sha256(bigram.encode("utf-8")).hexdigest(), 16)
             idx = h % self._dim
             sign = 1.0 if (h >> 8) & 1 else -1.0

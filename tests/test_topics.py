@@ -12,7 +12,6 @@ from recommender.models import (
     init_db,
 )
 from recommender.processing import (
-    RuleBasedTopicClassifier,
     TopicClassifier,
     classify_topics,
 )

@@ -1,7 +1,7 @@
 """Controlled financial topic taxonomy and classification pipeline."""
 
-from abc import ABC, abstractmethod
 import re
+from abc import ABC, abstractmethod
 from typing import Any
 
 # Controlled taxonomy of financial categories and topics
@@ -114,10 +114,7 @@ TOPIC_KEYWORDS: dict[str, list[str]] = {
 
 # Precompile regex word patterns for fast keyword boundary matching
 _COMPILED_PATTERNS: dict[str, list[re.Pattern]] = {
-    topic: [
-        re.compile(r"\b" + re.escape(kw) + r"\b", re.IGNORECASE)
-        for kw in keywords
-    ]
+    topic: [re.compile(r"\b" + re.escape(kw) + r"\b", re.IGNORECASE) for kw in keywords]
     for topic, keywords in TOPIC_KEYWORDS.items()
 }
 
@@ -210,4 +207,3 @@ def classify_topics(
         article.topics = topics
 
     return topics
-
