@@ -43,4 +43,3 @@ def test_setup_logging():
     setup_logging("DEBUG")
     root_logger = logging.getLogger()
     assert root_logger.level == logging.DEBUG
-
