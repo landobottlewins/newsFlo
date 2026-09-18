@@ -2,8 +2,8 @@
 
 import html
 import re
-from typing import Any
 import unicodedata
+from typing import Any
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 # Query parameters commonly used for campaign and analytics tracking

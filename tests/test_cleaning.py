@@ -177,4 +177,3 @@ def test_cleaning_determinism_and_idempotency():
     # Idempotent: cleaning already cleaned text does not alter it further
     run3 = normalize_text(run1)
     assert run3 == run1
-
